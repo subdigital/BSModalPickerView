@@ -53,7 +53,7 @@ BSModalPickerView *picker = [[PSModalPickerView alloc] initWithValues:self.value
 Finally, present the date picker when necessary (say on a button touch handler):
 
 ```objc
-PSModalDatePickerView *picker = [[PSModalDatePickerView alloc] initWithDate:[NSDate now]];
+BSModalDatePickerView *picker = [[BSModalDatePickerView alloc] initWithDate:[NSDate now]];
 picker.mode = UIDatePickerModeDate;
 [picker presentInView:self.view withBlock:^(BOOL madeChoice) {
   if (madeChoice) {
