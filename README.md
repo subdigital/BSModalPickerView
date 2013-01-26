@@ -4,6 +4,11 @@ BSModalPickerView
 A custom view component that presents a UIPickerView with a simple list of options, 
 along with a toolbar for Done/Cancel and a faded backdrop view.
 
+BSModalDatePickerView
+=====================
+
+A custom view component that presents a UIDatePicker 
+along with a toolbar for Done/Cancel and a faded backdrop view.
 
 ## Usage
 
@@ -41,9 +46,27 @@ BSModalPickerView *picker = [[PSModalPickerView alloc] initWithValues:self.value
 }];
 ```
 
+```objc
+#import "BSModalDatePickerView.h"
+```
+
+Finally, present the date picker when necessary (say on a button touch handler):
+
+```objc
+PSModalDatePickerView *picker = [[PSModalDatePickerView alloc] initWithDate:[NSDate now]];
+picker.mode = UIDatePickerModeDate;
+[picker presentInView:self.view withBlock:^(BOOL madeChoice) {
+  if (madeChoice) {
+    NSLog(@"You selected date %@", picker.seletedDate);
+  } else {
+    NSLog(@"You cancelled the picker");
+  }
+}];
+```
+
 ## Requirements
 
-`BSModalPickerView` requires iOS 4.x or greater.
+`BSModalPickerView` and `BSModalDatePickerView` requires iOS 4.x or greater.
 
 
 ## License
