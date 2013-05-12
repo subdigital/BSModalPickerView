@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author       = { 'Ben Scheirman' => 'ben@scheirman.com' }
   s.source       = { 
     :git => "https://github.com/subdigital/BSModalPickerView.git", 
-    :tag => "v#{spec.version}"
+    :tag => "v#{s.version}"
   }
 
   s.platform     = :ios, '4.0'
