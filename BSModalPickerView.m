@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#define BSMODALPICKER_PANEL_HEIGHT 200
+#define BSMODALPICKER_PANEL_HEIGHT 260
 #define BSMODALPICKER_TOOLBAR_HEIGHT 44
 #define BSMODALPICKER_BACKDROP_OPACITY 0.8
 
