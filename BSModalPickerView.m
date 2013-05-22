@@ -6,25 +6,26 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#define BSMODALPICKER_PANEL_HEIGHT 260
-#define BSMODALPICKER_TOOLBAR_HEIGHT 44
-#define BSMODALPICKER_BACKDROP_OPACITY 0.8
-
 #import "BSModalPickerView.h"
 
-@interface BSModalPickerView () {
-    UIPickerView *_picker;
-    UIToolbar *_toolbar;
-    UIView *_panel;
-    UIView *_backdropView;
-}
+@interface BSModalPickerView ()
+
+@property (nonatomic, strong) UIView *picker;
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIView *panel;
+@property (nonatomic, strong) UIView *backdropView;
 
 @property (nonatomic, strong) BSModalPickerViewCallback callbackBlock;
-@property (nonatomic, assign) NSUInteger indexSelectedBeforeDismissal;
+@property (nonatomic) NSUInteger indexSelectedBeforeDismissal;
 
 @end
 
 @implementation BSModalPickerView
+
+@synthesize picker = _picker;
+@synthesize toolbar = _toolbar;
+@synthesize panel = _panel;
+@synthesize backdropView = _backdropView;
 
 @synthesize selectedIndex = _selectedIndex;
 @synthesize values = _values;
@@ -45,16 +46,22 @@
     _values = values;
     
     if (values) {
-        if (_picker) {
-            [_picker reloadAllComponents];
+        if (self.picker) {
+            if ([self.picker isKindOfClass:[UIPickerView class]]) {
+                UIPickerView *pickerView = (UIPickerView *)self.picker;
+                [pickerView reloadAllComponents];
+            }
         }
     }
 }
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
     _selectedIndex = selectedIndex;
-    if (_picker) {
-        [_picker selectRow:selectedIndex inComponent:0 animated:YES];
+    if (self.picker) {
+        if ([self.picker isKindOfClass:[UIPickerView class]]) {
+            UIPickerView *pickerView = (UIPickerView *)self.picker;
+            [pickerView selectRow:selectedIndex inComponent:0 animated:YES];
+        }
     }
 }
 
@@ -101,16 +108,19 @@
                      }];
 }
 
-- (UIPickerView *)picker {
-    UIPickerView *picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, BSMODALPICKER_TOOLBAR_HEIGHT, self.bounds.size.width, BSMODALPICKER_PANEL_HEIGHT - BSMODALPICKER_TOOLBAR_HEIGHT)];
-    picker.dataSource = self;
-    picker.delegate = self;
-    picker.showsSelectionIndicator = YES;
-    [picker selectRow:self.selectedIndex inComponent:0 animated:NO];
+- (UIView *)picker {
+    if (!_picker) {
+        UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, BSMODALPICKER_TOOLBAR_HEIGHT, self.bounds.size.width, BSMODALPICKER_PANEL_HEIGHT - BSMODALPICKER_TOOLBAR_HEIGHT)];
+        pickerView.dataSource = self;
+        pickerView.delegate = self;
+        pickerView.showsSelectionIndicator = YES;
+        [pickerView selectRow:self.selectedIndex inComponent:0 animated:NO];
+        
+        _picker = pickerView;
+    }
     
-    return picker;
+    return _picker;
 }
-
 
 - (UIToolbar *)toolbar {
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, BSMODALPICKER_TOOLBAR_HEIGHT)];

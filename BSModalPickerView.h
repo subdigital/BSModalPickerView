@@ -6,15 +6,19 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#define BSMODALPICKER_PANEL_HEIGHT 260
+#define BSMODALPICKER_TOOLBAR_HEIGHT 44
+#define BSMODALPICKER_BACKDROP_OPACITY 0.8
+
 #import <UIKit/UIKit.h>
 
 typedef void (^BSModalPickerViewCallback)(BOOL madeChoice);
 
 @interface BSModalPickerView : UIView <UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (nonatomic, assign) NSUInteger selectedIndex;
-@property (nonatomic, assign) NSString *selectedValue;
-@property (nonatomic, retain) NSArray *values;
+@property (nonatomic) NSUInteger selectedIndex;
+@property (nonatomic, strong) NSString *selectedValue;
+@property (nonatomic, strong) NSArray *values;
 
 /* Initializes a new instance of the picker with the values to present to the user.
  (Note: call presentInView:withBlock: or presentInWindowWithBlock: to display the control)
