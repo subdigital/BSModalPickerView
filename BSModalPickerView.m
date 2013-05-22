@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic, strong) BSModalPickerViewCallback callbackBlock;
+@property (nonatomic, assign) NSUInteger indexSelectedBeforeDismissal;
 
 @end
 
@@ -28,6 +29,7 @@
 @synthesize selectedIndex = _selectedIndex;
 @synthesize values = _values;
 @synthesize callbackBlock = _callbackBlock;
+@synthesize indexSelectedBeforeDismissal = _indexSelectedBeforeDismissal;
 
 - (id)initWithValues:(NSArray *)values {
     self = [super init];
@@ -71,6 +73,7 @@
 }
 
 - (void)onDone:(id)sender {
+    self.selectedIndex = self.indexSelectedBeforeDismissal;
     self.callbackBlock(YES);
     [self dismissPicker];
 }
@@ -199,7 +202,7 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.selectedIndex = row;
+    self.indexSelectedBeforeDismissal = row;
 }
 
 @end
