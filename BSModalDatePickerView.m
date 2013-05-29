@@ -57,6 +57,27 @@
     return _mode;
 }
 
+- (void)onToday:(id)sender {
+    self.selectedDate = [NSDate date];
+}
+
+- (NSArray *)additionalToolbarItems {
+    if (self.showTodayButton) {
+        return @[
+                 [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                               target:nil action:nil],
+                 [[UIBarButtonItem alloc] initWithTitle:@"Today"
+                                                  style:UIBarButtonItemStyleBordered
+                                                 target:self
+                                                 action:@selector(onToday:)],
+                 [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                               target:nil action:nil],
+                 ];
+    } else {
+        return [super additionalToolbarItems];
+    }
+}
+
 #pragma mark - Custom Setters
 
 - (void)setSelectedDate:(NSDate *)selectedDate {
