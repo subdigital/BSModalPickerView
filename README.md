@@ -29,7 +29,7 @@ Finally, present the picker when necessary (say on a button touch handler):
 
 ```objc
 self.values = @[ @"Apples", @"Bananas", @"Grapes" ];
-BSModalPickerView *picker = [[PSModalPickerView alloc] initWithValues:self.values];
+BSModalPickerView *picker = [[BSModalPickerView alloc] initWithValues:self.values];
 [picker presentInView:self.view withBlock:^(BOOL madeChoice) {
   if (madeChoice) {
     NSLog(@"You chose index %d, which was the value %@", 
