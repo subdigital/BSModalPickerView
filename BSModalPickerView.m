@@ -6,30 +6,23 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#define BSMODALPICKER_PANEL_HEIGHT 260
-#define BSMODALPICKER_TOOLBAR_HEIGHT 44
-#define BSMODALPICKER_BACKDROP_OPACITY 0.8
-
 #import "BSModalPickerView.h"
 
-@interface BSModalPickerView () {
-    UIPickerView *_picker;
-    UIToolbar *_toolbar;
-    UIView *_panel;
-    UIView *_backdropView;
-}
+@interface BSModalPickerView ()
+
+@property (nonatomic, strong) UIView *picker;
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIView *panel;
+@property (nonatomic, strong) UIView *backdropView;
 
 @property (nonatomic, strong) BSModalPickerViewCallback callbackBlock;
-@property (nonatomic, assign) NSUInteger indexSelectedBeforeDismissal;
+@property (nonatomic) NSUInteger indexSelectedBeforeDismissal;
 
 @end
 
 @implementation BSModalPickerView
 
-@synthesize selectedIndex = _selectedIndex;
-@synthesize values = _values;
-@synthesize callbackBlock = _callbackBlock;
-@synthesize indexSelectedBeforeDismissal = _indexSelectedBeforeDismissal;
+#pragma mark - Initialization
 
 - (id)initWithValues:(NSArray *)values {
     self = [super init];
@@ -41,20 +34,77 @@
     return self;
 }
 
+#pragma mark - Custom Getters
+
+- (UIView *)picker {
+    if (!_picker) {
+        UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, BSMODALPICKER_TOOLBAR_HEIGHT, self.bounds.size.width, BSMODALPICKER_PANEL_HEIGHT - BSMODALPICKER_TOOLBAR_HEIGHT)];
+        pickerView.dataSource = self;
+        pickerView.delegate = self;
+        pickerView.showsSelectionIndicator = YES;
+        [pickerView selectRow:self.selectedIndex inComponent:0 animated:NO];
+        
+        _picker = pickerView;
+    }
+    
+    return _picker;
+}
+
+- (UIToolbar *)toolbar {
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, BSMODALPICKER_TOOLBAR_HEIGHT)];
+    toolbar.barStyle = UIBarStyleBlackTranslucent;
+    
+    toolbar.items = [NSArray arrayWithObjects:
+                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                   target:self
+                                                                   action:@selector(onCancel:)],
+                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                   target:nil
+                                                                   action:nil],
+                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                   target:self
+                                                                   action:@selector(onDone:)],
+                     nil];
+    
+    return toolbar;
+}
+
+- (UIView *)backdropView {
+    UIView *backdropView = [[UIView alloc] initWithFrame:self.bounds];
+    backdropView.backgroundColor = [UIColor colorWithWhite:0 alpha:BSMODALPICKER_BACKDROP_OPACITY];
+    backdropView.alpha = 0;
+    
+    UIGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onBackdropTap:)];
+    [backdropView addGestureRecognizer:tapRecognizer];
+    return backdropView;
+}
+
+- (NSString *)selectedValue {
+    return [self.values objectAtIndex:self.selectedIndex];
+}
+
+#pragma mark - Custom Setters
+
 - (void)setValues:(NSArray *)values {
     _values = values;
     
     if (values) {
-        if (_picker) {
-            [_picker reloadAllComponents];
+        if (self.picker) {
+            if ([self.picker isKindOfClass:[UIPickerView class]]) {
+                UIPickerView *pickerView = (UIPickerView *)self.picker;
+                [pickerView reloadAllComponents];
+            }
         }
     }
 }
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
     _selectedIndex = selectedIndex;
-    if (_picker) {
-        [_picker selectRow:selectedIndex inComponent:0 animated:YES];
+    if (self.picker) {
+        if ([self.picker isKindOfClass:[UIPickerView class]]) {
+            UIPickerView *pickerView = (UIPickerView *)self.picker;
+            [pickerView selectRow:selectedIndex inComponent:0 animated:YES];
+        }
     }
 }
 
@@ -63,9 +113,7 @@
     [self setSelectedIndex:index];
 }
 
-- (NSString *)selectedValue {
-    return [self.values objectAtIndex:self.selectedIndex];
-}
+#pragma mark - Event Handlers
 
 - (void)onCancel:(id)sender {
     self.callbackBlock(NO);
@@ -81,6 +129,8 @@
 - (void)onBackdropTap:(id)sender {
     [self onCancel:sender];
 }
+
+#pragma mark - Instance Methods
 
 - (void)dismissPicker {
     [UIView animateWithDuration:0.25 delay:0
@@ -99,46 +149,6 @@
                          
                          [self removeFromSuperview];
                      }];
-}
-
-- (UIPickerView *)picker {
-    UIPickerView *picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, BSMODALPICKER_TOOLBAR_HEIGHT, self.bounds.size.width, BSMODALPICKER_PANEL_HEIGHT - BSMODALPICKER_TOOLBAR_HEIGHT)];
-    picker.dataSource = self;
-    picker.delegate = self;
-    picker.showsSelectionIndicator = YES;
-    [picker selectRow:self.selectedIndex inComponent:0 animated:NO];
-    
-    return picker;
-}
-
-
-- (UIToolbar *)toolbar {
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, BSMODALPICKER_TOOLBAR_HEIGHT)];
-    toolbar.barStyle = UIBarStyleBlackTranslucent;
-    
-    toolbar.items = [NSArray arrayWithObjects:
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
-                                                                   target:self 
-                                                                   action:@selector(onCancel:)],
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
-                                                                   target:nil 
-                                                                   action:nil],
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
-                                                                   target:self 
-                                                                   action:@selector(onDone:)],
-                     nil];
-    
-    return toolbar;
-}
-
-- (UIView *)backdropView {
-    UIView *backdropView = [[UIView alloc] initWithFrame:self.bounds];
-    backdropView.backgroundColor = [UIColor colorWithWhite:0 alpha:BSMODALPICKER_BACKDROP_OPACITY];
-    backdropView.alpha = 0;
-    
-    UIGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onBackdropTap:)];
-    [backdropView addGestureRecognizer:tapRecognizer];
-    return backdropView;
 }
 
 - (void)presentInView:(UIView *)view withBlock:(BSModalPickerViewCallback)callback {
