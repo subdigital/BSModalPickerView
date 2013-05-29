@@ -18,9 +18,9 @@
 		B500DB1117563C4900E08D3B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B500DB1017563C4900E08D3B /* Default-568h@2x.png */; };
 		B500DB1417563C4900E08D3B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B500DB1317563C4900E08D3B /* ViewController.m */; };
 		B500DB1717563C4900E08D3B /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B500DB1517563C4900E08D3B /* ViewController.xib */; };
-		B500DB2217563CBD00E08D3B /* BSModalDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B500DB1F17563CBD00E08D3B /* BSModalDatePickerView.m */; };
-		B500DB2317563CBD00E08D3B /* BSModalPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B500DB2117563CBD00E08D3B /* BSModalPickerView.m */; };
-		B500DB26175651EB00E08D3B /* BSModalPickerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B500DB25175651EB00E08D3B /* BSModalPickerBase.m */; };
+		B5A7E07F17565C8F005A49C4 /* BSModalDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A7E07A17565C8F005A49C4 /* BSModalDatePickerView.m */; };
+		B5A7E08017565C8F005A49C4 /* BSModalPickerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A7E07C17565C8F005A49C4 /* BSModalPickerBase.m */; };
+		B5A7E08117565C8F005A49C4 /* BSModalPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A7E07E17565C8F005A49C4 /* BSModalPickerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +40,12 @@
 		B500DB1217563C4900E08D3B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B500DB1317563C4900E08D3B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B500DB1617563C4900E08D3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		B500DB1E17563CBD00E08D3B /* BSModalDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSModalDatePickerView.h; path = ../BSModalDatePickerView.h; sourceTree = "<group>"; };
-		B500DB1F17563CBD00E08D3B /* BSModalDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSModalDatePickerView.m; path = ../BSModalDatePickerView.m; sourceTree = "<group>"; };
-		B500DB2017563CBD00E08D3B /* BSModalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSModalPickerView.h; path = ../BSModalPickerView.h; sourceTree = "<group>"; };
-		B500DB2117563CBD00E08D3B /* BSModalPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSModalPickerView.m; path = ../BSModalPickerView.m; sourceTree = "<group>"; };
-		B500DB24175651EB00E08D3B /* BSModalPickerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSModalPickerBase.h; path = ../BSModalPickerBase.h; sourceTree = "<group>"; };
-		B500DB25175651EB00E08D3B /* BSModalPickerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSModalPickerBase.m; path = ../BSModalPickerBase.m; sourceTree = "<group>"; };
+		B5A7E07917565C8F005A49C4 /* BSModalDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSModalDatePickerView.h; sourceTree = "<group>"; };
+		B5A7E07A17565C8F005A49C4 /* BSModalDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSModalDatePickerView.m; sourceTree = "<group>"; };
+		B5A7E07B17565C8F005A49C4 /* BSModalPickerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSModalPickerBase.h; sourceTree = "<group>"; };
+		B5A7E07C17565C8F005A49C4 /* BSModalPickerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSModalPickerBase.m; sourceTree = "<group>"; };
+		B5A7E07D17565C8F005A49C4 /* BSModalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSModalPickerView.h; sourceTree = "<group>"; };
+		B5A7E07E17565C8F005A49C4 /* BSModalPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSModalPickerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 		B500DAEE17563C4800E08D3B = {
 			isa = PBXGroup;
 			children = (
-				B500DB1D17563C5000E08D3B /* BSModalPickerView */,
+				B5A7E07817565C8F005A49C4 /* BSModalPickerView */,
 				B500DB0017563C4900E08D3B /* ModalPickerDemo */,
 				B500DAF917563C4900E08D3B /* Frameworks */,
 				B500DAF817563C4900E08D3B /* Products */,
@@ -117,17 +117,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B500DB1D17563C5000E08D3B /* BSModalPickerView */ = {
+		B5A7E07817565C8F005A49C4 /* BSModalPickerView */ = {
 			isa = PBXGroup;
 			children = (
-				B500DB24175651EB00E08D3B /* BSModalPickerBase.h */,
-				B500DB25175651EB00E08D3B /* BSModalPickerBase.m */,
-				B500DB1E17563CBD00E08D3B /* BSModalDatePickerView.h */,
-				B500DB1F17563CBD00E08D3B /* BSModalDatePickerView.m */,
-				B500DB2017563CBD00E08D3B /* BSModalPickerView.h */,
-				B500DB2117563CBD00E08D3B /* BSModalPickerView.m */,
+				B5A7E07917565C8F005A49C4 /* BSModalDatePickerView.h */,
+				B5A7E07A17565C8F005A49C4 /* BSModalDatePickerView.m */,
+				B5A7E07B17565C8F005A49C4 /* BSModalPickerBase.h */,
+				B5A7E07C17565C8F005A49C4 /* BSModalPickerBase.m */,
+				B5A7E07D17565C8F005A49C4 /* BSModalPickerView.h */,
+				B5A7E07E17565C8F005A49C4 /* BSModalPickerView.m */,
 			);
 			name = BSModalPickerView;
+			path = ../BSModalPickerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +200,9 @@
 				B500DB0717563C4900E08D3B /* main.m in Sources */,
 				B500DB0B17563C4900E08D3B /* AppDelegate.m in Sources */,
 				B500DB1417563C4900E08D3B /* ViewController.m in Sources */,
-				B500DB2217563CBD00E08D3B /* BSModalDatePickerView.m in Sources */,
-				B500DB2317563CBD00E08D3B /* BSModalPickerView.m in Sources */,
-				B500DB26175651EB00E08D3B /* BSModalPickerBase.m in Sources */,
+				B5A7E07F17565C8F005A49C4 /* BSModalDatePickerView.m in Sources */,
+				B5A7E08017565C8F005A49C4 /* BSModalPickerBase.m in Sources */,
+				B5A7E08117565C8F005A49C4 /* BSModalPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +325,7 @@
 				B500DB1C17563C4900E08D3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
