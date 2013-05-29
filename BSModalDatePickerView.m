@@ -3,14 +3,12 @@
 //  CustomPicker
 //
 //  Created by Seth Friedman on 5/22/13.
-//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2013 Fickle Bits, LLC. All rights reserved.
 //
 
 #import "BSModalDatePickerView.h"
-#import "BSModalPickerView.h"
 
 @interface BSModalDatePickerView () {
-    UIView *_picker;
 }
 
 @end
@@ -35,36 +33,26 @@
 
 #pragma mark - Custom Getters
 
-- (UIView *)picker {
-    if (!_picker) {
-        UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, BSMODALPICKER_TOOLBAR_HEIGHT, self.bounds.size.width, BSMODALPICKER_PANEL_HEIGHT - BSMODALPICKER_TOOLBAR_HEIGHT)];
-        
-        if (_selectedDate) {
-            datePicker.date = _selectedDate;
-        }
-        
-        datePicker.datePickerMode = _mode;
-        
-        _picker = datePicker;
+- (UIView *)pickerWithFrame:(CGRect)pickerFrame {
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:pickerFrame];
+    
+    if (_selectedDate) {
+        datePicker.date = _selectedDate;
     }
     
-    return _picker;
+    datePicker.datePickerMode = _mode;
+    return datePicker;
 }
 
 - (NSDate *)selectedDate {
-    if ([self.picker isKindOfClass:[UIDatePicker class]]) {
-        UIDatePicker *datePicker = (UIDatePicker *)self.picker;
-        _selectedDate = datePicker.date;
-    }
-    
+    UIDatePicker *datePicker = (UIDatePicker *)self.picker;
+    _selectedDate = datePicker.date;
     return _selectedDate;
 }
 
 - (UIDatePickerMode)mode {
-    if ([self.picker isKindOfClass:[UIDatePicker class]]) {
-        UIDatePicker *datePicker = (UIDatePicker *)self.picker;
-        _mode = datePicker.datePickerMode;
-    }
+    UIDatePicker *datePicker = (UIDatePicker *)self.picker;
+    _mode = datePicker.datePickerMode;
     
     return _mode;
 }
@@ -75,7 +63,7 @@
     if (_selectedDate != selectedDate) {
         _selectedDate = selectedDate;
         
-        if ([self.picker isKindOfClass:[UIDatePicker class]]) {
+        if (_picker) {
             UIDatePicker *datePicker = (UIDatePicker *)self.picker;
             datePicker.date = _selectedDate;
         }
@@ -86,7 +74,7 @@
     if (_mode != mode) {
         _mode = mode;
         
-        if ([self.picker isKindOfClass:[UIDatePicker class]]) {
+        if (_picker) {
             UIDatePicker *datePicker = (UIDatePicker *)self.picker;
             datePicker.datePickerMode = _mode;
         }

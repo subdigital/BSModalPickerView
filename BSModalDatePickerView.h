@@ -3,12 +3,12 @@
 //  CustomPicker
 //
 //  Created by Seth Friedman on 5/22/13.
-//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2013 Fickle Bits, LLC. All rights reserved.
 //
 
-#import "BSModalPickerView.h"
+#import "BSModalPickerBase.h"
 
-@interface BSModalDatePickerView : BSModalPickerView
+@interface BSModalDatePickerView : BSModalPickerBase
 
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (nonatomic) UIDatePickerMode mode;
