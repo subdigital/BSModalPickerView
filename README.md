@@ -2,7 +2,7 @@ BSModalPickerView
 =================
 
 A custom view component that presents a UIPickerView with a simple list of options, 
-along with a toolbar for Done/Cancel and a faded backdrop view.
+along with a toolbar for Done/Cancel and an optional faded backdrop view.
 
 
 ## Usage
@@ -30,7 +30,7 @@ Finally, present the picker when necessary (say on a button touch handler):
 ```objc
 self.values = @[ @"Apples", @"Bananas", @"Grapes" ];
 BSModalPickerView *picker = [[BSModalPickerView alloc] initWithValues:self.values];
-[picker presentInView:self.view withBlock:^(BOOL madeChoice) {
+[picker presentInView:self.view withBackdrop:YES andBlock:^(BOOL madeChoice) {
   if (madeChoice) {
     NSLog(@"You chose index %d, which was the value %@", 
       picker.selectedIndex,
@@ -43,7 +43,7 @@ BSModalPickerView *picker = [[BSModalPickerView alloc] initWithValues:self.value
 
 ## Requirements
 
-`BSModalPickerView` requires iOS 4.x or greater.
+`BSModalPickerView` requires iOS 5.x or greater.
 
 
 ## License
