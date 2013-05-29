@@ -141,7 +141,7 @@
     return backdropView;
 }
 
-- (void)presentInView:(UIView *)view withBlock:(BSModalPickerViewCallback)callback {
+- (void)presentInView:(UIView *)view withBackdrop:(BOOL)flag andBlock:(BSModalPickerViewCallback)callback {
     self.frame = view.bounds;
     self.callbackBlock = callback;
     
@@ -152,9 +152,11 @@
     _picker = [self picker];
     _toolbar = [self toolbar];
     
-    _backdropView = [self backdropView];
-    [self addSubview:_backdropView];
-
+    if (flag) {
+        _backdropView = [self backdropView];
+        [self addSubview:_backdropView];
+    }
+    
     [_panel addSubview:_picker];
     [_panel addSubview:_toolbar];
     
@@ -180,7 +182,7 @@
     id appDelegate = [[UIApplication sharedApplication] delegate];
     if ([appDelegate respondsToSelector:@selector(window)]) {
         UIWindow *window = [appDelegate window];
-        [self presentInView:window withBlock:callback];
+        [self presentInView:window withBackdrop:YES andBlock:callback];
     } else {
         [NSException exceptionWithName:@"Can't find a window property on App Delegate.  Please use the presentInView:withBlock: method" reason:@"The app delegate does not contain a window method"
                               userInfo:nil];

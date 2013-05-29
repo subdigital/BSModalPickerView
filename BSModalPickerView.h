@@ -24,9 +24,10 @@ typedef void (^BSModalPickerViewCallback)(BOOL madeChoice);
 /* Presents the control embedded in the provided view.
  Arguments:
    view        - The view that will contain the control.
+   flag        - Whether the opaque backdrop will display behind the picker.
    callback    - The block that will receive the result of the user action. 
  */
-- (void)presentInView:(UIView *)view withBlock:(BSModalPickerViewCallback)callback;
+- (void)presentInView:(UIView *)view withBackdrop:(BOOL)flag andBlock:(BSModalPickerViewCallback)callback;
 
 /* Presents the control embedded in the window.
  Arguments:
