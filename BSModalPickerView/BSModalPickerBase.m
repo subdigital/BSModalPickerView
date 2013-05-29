@@ -109,7 +109,9 @@
     
     self.panel = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - BSMODALPICKER_PANEL_HEIGHT, self.bounds.size.width, BSMODALPICKER_PANEL_HEIGHT)];
     
-    [self addSubview:self.backdropView];
+    if (self.presentBackdropView) {
+        [self addSubview:self.backdropView];
+    }
 
     [self.panel addSubview:self.picker];
     [self.panel addSubview:self.toolbar];
