@@ -75,10 +75,8 @@
     if (_selectedDate != selectedDate) {
         _selectedDate = selectedDate;
         
-        if ([self.picker isKindOfClass:[UIDatePicker class]]) {
-            UIDatePicker *datePicker = (UIDatePicker *)self.picker;
-            datePicker.date = _selectedDate;
-        }
+        UIDatePicker *datePicker = (UIDatePicker *)self.picker;
+        datePicker.date = _selectedDate;
     }
 }
 
@@ -86,10 +84,8 @@
     if (_mode != mode) {
         _mode = mode;
         
-        if ([self.picker isKindOfClass:[UIDatePicker class]]) {
-            UIDatePicker *datePicker = (UIDatePicker *)self.picker;
-            datePicker.datePickerMode = _mode;
-        }
+        UIDatePicker *datePicker = (UIDatePicker *)self.picker;
+        datePicker.datePickerMode = _mode;
     }
 }
 
