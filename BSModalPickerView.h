@@ -12,9 +12,9 @@ typedef void (^BSModalPickerViewCallback)(BOOL madeChoice);
 
 @interface BSModalPickerView : UIView <UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (nonatomic, assign) NSUInteger selectedIndex;
-@property (nonatomic, assign) NSString *selectedValue;
-@property (nonatomic, retain) NSArray *values;
+@property (nonatomic) NSUInteger selectedIndex;
+@property (nonatomic, strong) NSString *selectedValue;
+@property (nonatomic, strong) NSArray *values;
 
 /* Initializes a new instance of the picker with the values to present to the user.
  (Note: call presentInView:withBlock: or presentInWindowWithBlock: to display the control)

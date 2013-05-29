@@ -20,16 +20,11 @@
 }
 
 @property (nonatomic, strong) BSModalPickerViewCallback callbackBlock;
-@property (nonatomic, assign) NSUInteger indexSelectedBeforeDismissal;
+@property (nonatomic) NSUInteger indexSelectedBeforeDismissal;
 
 @end
 
 @implementation BSModalPickerView
-
-@synthesize selectedIndex = _selectedIndex;
-@synthesize values = _values;
-@synthesize callbackBlock = _callbackBlock;
-@synthesize indexSelectedBeforeDismissal = _indexSelectedBeforeDismissal;
 
 - (id)initWithValues:(NSArray *)values {
     self = [super init];
@@ -180,13 +175,8 @@
 
 - (void)presentInWindowWithBlock:(BSModalPickerViewCallback)callback {
     id appDelegate = [[UIApplication sharedApplication] delegate];
-    if ([appDelegate respondsToSelector:@selector(window)]) {
-        UIWindow *window = [appDelegate window];
-        [self presentInView:window withBackdrop:YES andBlock:callback];
-    } else {
-        [NSException exceptionWithName:@"Can't find a window property on App Delegate.  Please use the presentInView:withBlock: method" reason:@"The app delegate does not contain a window method"
-                              userInfo:nil];
-    }
+    UIWindow *window = [appDelegate window];
+    [self presentInView:window withBackdrop:YES andBlock:callback];
 }
 
 #pragma mark - Picker View
