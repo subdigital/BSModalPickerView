@@ -3,12 +3,12 @@ BSModalPickerView
 
 ## BSModalPickerView
 
-A custom view component that presents a UIPickerView with a simple list of options, 
+A custom view component that presents a `UIPickerView` with a simple list of options, 
 along with a toolbar for Done/Cancel and an optional faded backdrop view.
 
 ## BSModalDatePickerView
 
-A custom view component that presents a UIDatePicker with a toolbar for Done/Cancel,
+A custom view component that presents a `UIDatePicker` with a toolbar for Done/Cancel,
 and an optional Today button.
 
 ## Usage
@@ -63,6 +63,8 @@ BSModalDatePickerView *datePicker = [[BSModalDatePickerView alloc] initWithDate:
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     NSLog(@"You chose the date %@", 
       [dateFormatter stringFromDate:datePicker.selectedDate]);
+  }
+}];
 ```
 
 ## Requirements
