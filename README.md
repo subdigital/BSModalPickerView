@@ -15,19 +15,11 @@ and an optional Today button.
 
 Usage is easy:
 
-Add the dependency to your `Podfile`. You can add the whole library:
+Add the dependency to your `Podfile`:
 
 ```ruby
 platform :ios
 pod 'BSModalPickerView'
-...
-```
-
-Or, alternatively, you can add just the component you want to use:
-
-```ruby
-platform :ios
-pod 'BSModalPickerView/BSModalPickerView' # or 'BSModalPickerView/BSModalDatePickerView'
 ...
 ```
 
