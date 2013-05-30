@@ -52,15 +52,18 @@
         if (self.picker) {
             UIPickerView *pickerView = (UIPickerView *)self.picker;
             [pickerView reloadAllComponents];
+            self.selectedIndex = 0;
         }
     }
 }
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
-    _selectedIndex = selectedIndex;
-    if (self.picker) {
-        UIPickerView *pickerView = (UIPickerView *)self.picker;
-        [pickerView selectRow:selectedIndex inComponent:0 animated:YES];
+    if (_selectedIndex != selectedIndex) {
+        _selectedIndex = selectedIndex;
+        if (self.picker) {
+            UIPickerView *pickerView = (UIPickerView *)self.picker;
+            [pickerView selectRow:selectedIndex inComponent:0 animated:YES];
+        }
     }
 }
 
