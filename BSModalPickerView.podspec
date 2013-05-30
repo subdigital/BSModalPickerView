@@ -14,12 +14,4 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '5.0'
   s.source_files = 'BSModalPickerView/*.{h,m}'
   s.requires_arc = true
-
-  s.subspec 'BSModalPickerView' do |sp|
-    sp.source_files = 'BSModalPickerView/BSModalPickerView'
-  end
-
-  s.subspec 'BSModalDatePickerView' do |sp|
-    sp.source_files = 'BSModalPickerView/BSModalDatePickerView'
-  end
 end
