@@ -20,6 +20,9 @@ typedef void (^BSModalPickerViewCallback)(BOOL madeChoice);
 
 @property (nonatomic, strong) UIView *picker;
 
+/* Determines whether to display the opaque backdrop view.  By default, this is YES. */
+@property (nonatomic) BOOL presentBackdropView;
+
 /* Presents the control embedded in the provided view.
  Arguments:
    view        - The view that will contain the control.

@@ -8,11 +8,6 @@
 
 #import "BSModalDatePickerView.h"
 
-@interface BSModalDatePickerView () {
-}
-
-@end
-
 @implementation BSModalDatePickerView
 
 @synthesize selectedDate = _selectedDate;
@@ -24,8 +19,8 @@
     self = [super init];
     
     if (self) {
-        self.selectedDate = date;
-        self.mode = UIDatePickerModeDate;
+        _selectedDate = date;
+        _mode = UIDatePickerModeDate;
     }
     
     return self;
@@ -36,29 +31,30 @@
 - (UIView *)pickerWithFrame:(CGRect)pickerFrame {
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:pickerFrame];
     
-    if (_selectedDate) {
-        datePicker.date = _selectedDate;
+    if (self.selectedDate) {
+        datePicker.date = self.selectedDate;
     }
     
-    datePicker.datePickerMode = _mode;
+    datePicker.datePickerMode = self.mode;
     return datePicker;
 }
 
 - (NSDate *)selectedDate {
-    UIDatePicker *datePicker = (UIDatePicker *)self.picker;
-    _selectedDate = datePicker.date;
+    if (_picker) {
+        UIDatePicker *datePicker = (UIDatePicker *)self.picker;
+        _selectedDate = datePicker.date;
+    }
+    
     return _selectedDate;
 }
 
 - (UIDatePickerMode)mode {
-    UIDatePicker *datePicker = (UIDatePicker *)self.picker;
-    _mode = datePicker.datePickerMode;
+    if (_picker) {
+        UIDatePicker *datePicker = (UIDatePicker *)self.picker;
+        _mode = datePicker.datePickerMode;
+    }
     
     return _mode;
-}
-
-- (void)onToday:(id)sender {
-    self.selectedDate = [NSDate date];
 }
 
 - (NSArray *)additionalToolbarItems {
@@ -84,7 +80,7 @@
     if (_selectedDate != selectedDate) {
         _selectedDate = selectedDate;
         
-        if (_picker) {
+        if (self.picker) {
             UIDatePicker *datePicker = (UIDatePicker *)self.picker;
             datePicker.date = _selectedDate;
         }
@@ -95,11 +91,17 @@
     if (_mode != mode) {
         _mode = mode;
         
-        if (_picker) {
+        if (self.picker) {
             UIDatePicker *datePicker = (UIDatePicker *)self.picker;
             datePicker.datePickerMode = _mode;
         }
     }
+}
+
+#pragma mark - Event Handler
+
+- (void)onToday:(id)sender {
+    self.selectedDate = [NSDate date];
 }
 
 @end
