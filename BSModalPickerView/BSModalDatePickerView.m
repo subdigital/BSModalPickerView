@@ -19,7 +19,6 @@
     self = [super init];
     
     if (self) {
-        self.presentBackdropView = YES;
         _selectedDate = date;
         _mode = UIDatePickerModeDate;
     }

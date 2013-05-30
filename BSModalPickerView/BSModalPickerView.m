@@ -23,7 +23,6 @@
     if (self) {
         self.values = values;
         self.userInteractionEnabled = YES;
-        self.presentBackdropView = YES;
     }
     
     return self;

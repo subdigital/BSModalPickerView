@@ -19,6 +19,19 @@
 
 @implementation BSModalPickerBase
 
+#pragma mark - Designated Initializer
+
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        self.presentBackdropView = YES;
+        
+    }
+    
+    return self;
+}
+
 #pragma mark - Custom Getters
 
 - (UIView *)picker {
