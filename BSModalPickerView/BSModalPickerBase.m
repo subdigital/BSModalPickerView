@@ -62,7 +62,7 @@
     if (!_picker) {
         CGRect pickerFrame = CGRectMake(0,
                                         BSMODALPICKER_TOOLBAR_HEIGHT,
-                                        self.bounds.size.width,
+                                        [UIApplication sharedApplication].keyWindow.rootViewController.view.bounds.size.width,
                                         BSMODALPICKER_PANEL_HEIGHT - BSMODALPICKER_TOOLBAR_HEIGHT);
         
         _picker = [self pickerWithFrame:pickerFrame];
