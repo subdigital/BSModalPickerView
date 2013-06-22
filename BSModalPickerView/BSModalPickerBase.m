@@ -23,12 +23,11 @@
 
 - (id)init {
     self = [super init];
-    
     if (self) {
+        self.autoresizesSubviews = YES;
         self.presentBackdropView = YES;
-        
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
-    
     return self;
 }
 
@@ -40,10 +39,11 @@
                                         BSMODALPICKER_TOOLBAR_HEIGHT,
                                         self.bounds.size.width,
                                         BSMODALPICKER_PANEL_HEIGHT - BSMODALPICKER_TOOLBAR_HEIGHT);
-        
+
         _picker = [self pickerWithFrame:pickerFrame];
+        _picker.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     }
-    
+
     return _picker;
 }
 
@@ -77,6 +77,7 @@
         [toolbarItems addObjectsFromArray:[self additionalToolbarItems]];
         [toolbarItems addObject:doneButton];
         _toolbar.items = toolbarItems;
+        _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     }
     
     return _toolbar;
@@ -86,6 +87,7 @@
     if (!_backdropView) {
         _backdropView = [[UIView alloc] initWithFrame:self.bounds];
         _backdropView.backgroundColor = [UIColor colorWithWhite:0 alpha:BSMODALPICKER_BACKDROP_OPACITY];
+        _backdropView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _backdropView.alpha = 0;
     
         UIGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onBackdropTap:)];
@@ -121,11 +123,16 @@
     [self.backdropView removeFromSuperview];
     
     self.panel = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - BSMODALPICKER_PANEL_HEIGHT, self.bounds.size.width, BSMODALPICKER_PANEL_HEIGHT)];
+    self.panel.autoresizesSubviews = YES;
+    self.panel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     
     if (self.presentBackdropView) {
         [self addSubview:self.backdropView];
     }
 
+    CGRect rect = self.picker.frame;
+    rect.size.width = self.panel.frame.size.width;
+    self.picker.frame = rect;
     [self.panel addSubview:self.picker];
     [self.panel addSubview:self.toolbar];
     
