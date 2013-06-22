@@ -24,7 +24,6 @@
         self.values = values;
         self.userInteractionEnabled = YES;
     }
-    
     return self;
 }
 

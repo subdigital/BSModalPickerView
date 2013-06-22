@@ -17,12 +17,10 @@
 
 - (id)initWithDate:(NSDate *)date {
     self = [super init];
-    
     if (self) {
         _selectedDate = date;
         _mode = UIDatePickerModeDate;
     }
-    
     return self;
 }
 
@@ -30,11 +28,11 @@
 
 - (UIView *)pickerWithFrame:(CGRect)pickerFrame {
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:pickerFrame];
-    
+
     if (self.selectedDate) {
         datePicker.date = self.selectedDate;
     }
-    
+
     datePicker.datePickerMode = self.mode;
     return datePicker;
 }
@@ -44,7 +42,7 @@
         UIDatePicker *datePicker = (UIDatePicker *)self.picker;
         _selectedDate = datePicker.date;
     }
-    
+
     return _selectedDate;
 }
 
@@ -53,7 +51,7 @@
         UIDatePicker *datePicker = (UIDatePicker *)self.picker;
         _mode = datePicker.datePickerMode;
     }
-    
+
     return _mode;
 }
 
