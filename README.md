@@ -63,10 +63,8 @@ BSModalDatePickerView *datePicker = [[BSModalDatePickerView alloc] initWithDate:
 
 Take a look at this video:
 
-<video controls>
-  <source src="https://benpublic.s3.amazonaws.com/BSModalPickerDemo.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+[![BSModalPickerView Demo](https://benpublic.s3.amazonaws.com/BSModalPickerDemo.png)](https://benpublic.s3.amazonaws.com/BSModalPickerDemo.mp4)
+
 
 ## Requirements
 
