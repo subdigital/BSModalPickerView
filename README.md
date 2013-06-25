@@ -59,6 +59,15 @@ BSModalDatePickerView *datePicker = [[BSModalDatePickerView alloc] initWithDate:
 }];
 ```
 
+## Demo
+
+Take a look at this video:
+
+<video controls>
+  <source src="https://benpublic.s3.amazonaws.com/BSModalPickerDemo.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
 ## Requirements
 
 `BSModalPickerView` requires iOS 5.x or greater.
