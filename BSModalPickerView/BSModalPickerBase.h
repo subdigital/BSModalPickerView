@@ -23,6 +23,9 @@ typedef void (^BSModalPickerViewCallback)(BOOL madeChoice);
 /* Determines whether to display the opaque backdrop view.  By default, this is YES. */
 @property (nonatomic) BOOL presentBackdropView;
 
+/* Determine the style of toolbar of PickerView, UIBarStyleDefault is default */
+@property (nonatomic) NSInteger toolBarStyle;
+
 /* Presents the control embedded in the provided view.
  Arguments:
    view        - The view that will contain the control.

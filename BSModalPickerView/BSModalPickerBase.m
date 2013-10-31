@@ -27,6 +27,7 @@
         self.autoresizesSubviews = YES;
         self.presentBackdropView = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.toolBarStyle = UIBarStyleDefault;
     }
     return self;
 }
@@ -64,7 +65,7 @@
 - (UIToolbar *)toolbar {
     if (!_toolbar) {
         _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, BSMODALPICKER_TOOLBAR_HEIGHT)];
-        _toolbar.barStyle = UIBarStyleBlackTranslucent;
+        _toolbar.barStyle = _toolBarStyle;
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                   target:self
                                                                                   action:@selector(onCancel:)];
