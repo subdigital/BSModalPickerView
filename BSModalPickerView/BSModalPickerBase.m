@@ -27,7 +27,7 @@
         self.autoresizesSubviews = YES;
         self.presentBackdropView = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        self.toolBarStyle = UIBarStyleDefault;
+        self.toolBarStyle = UIBarStyleBlackTranslucent;
     }
     return self;
 }
