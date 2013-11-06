@@ -59,6 +59,7 @@
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
     if (_selectedIndex != selectedIndex) {
         _selectedIndex = selectedIndex;
+        _indexSelectedBeforeDismissal = selectedIndex;
         if (self.picker) {
             UIPickerView *pickerView = (UIPickerView *)self.picker;
             [pickerView selectRow:selectedIndex inComponent:0 animated:YES];
