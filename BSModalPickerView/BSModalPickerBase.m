@@ -42,6 +42,9 @@
 
         _picker = [self pickerWithFrame:pickerFrame];
         _picker.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+            _picker.backgroundColor = [UIColor whiteColor];
+        }
     }
 
     return _picker;
@@ -64,7 +67,11 @@
 - (UIToolbar *)toolbar {
     if (!_toolbar) {
         _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, BSMODALPICKER_TOOLBAR_HEIGHT)];
-        _toolbar.barStyle = UIBarStyleBlackTranslucent;
+        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+            _toolbar.barStyle = UIBarStyleBlackTranslucent;
+        } else {
+            _toolbar.barStyle = UIBarButtonItemStylePlain;
+        }
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                   target:self
                                                                                   action:@selector(onCancel:)];
