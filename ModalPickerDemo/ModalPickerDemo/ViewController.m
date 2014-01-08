@@ -12,6 +12,7 @@
 
 @interface ViewController () {
     NSInteger _lastSelectedIndex;
+    NSMutableArray* _lastSelectedIndexes;
 }
 
 @end
@@ -20,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _lastSelectedIndexes = [[NSMutableArray alloc] init];
 }
 
 - (IBAction)onSelectColor:(id)sender {
@@ -60,6 +62,33 @@
                             self.dateLabel.text = [dateFormatter stringFromDate:datePicker.selectedDate];
                         }
                     }];
+}
+
+- (IBAction)onSelectMulti:(id)sender {
+    NSArray *names = @[
+                       @[
+                        @"John",
+                        @"Jane",
+                        @"Bob",
+                        @"Barbera"
+                        ],
+                       @[
+                        @"Smith",
+                        @"Doe",
+                        @"Jones"
+                        ]
+                       ];
+
+    BSModalPickerView *pickerView = [[BSModalPickerView alloc] initWithValues:names];
+    pickerView.selectedIndexes = _lastSelectedIndexes;
+    [pickerView presentInView:self.view
+                    withBlock:^(BOOL madeChoice) {
+                        if (madeChoice) {
+                            _lastSelectedIndexes = pickerView.selectedIndexes;
+                            self.multiLabel.text = [pickerView.selectedValues componentsJoinedByString:@" "];
+                        }
+                    }];
+
 }
 
 @end
