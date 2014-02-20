@@ -57,6 +57,7 @@
 }
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
+    self.indexSelectedBeforeDismissal = selectedIndex;
     if (_selectedIndex != selectedIndex) {
         _selectedIndex = selectedIndex;
         if (self.picker) {
