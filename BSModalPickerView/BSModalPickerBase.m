@@ -133,6 +133,7 @@
     CGRect rect = self.picker.frame;
     rect.size.width = self.panel.frame.size.width;
     self.picker.frame = rect;
+    self.picker.backgroundColor = [UIColor whiteColor];
     [self.panel addSubview:self.picker];
     [self.panel addSubview:self.toolbar];
     
