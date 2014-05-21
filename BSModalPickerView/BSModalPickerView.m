@@ -78,6 +78,12 @@
     [super onDone:sender];
 }
 
+- (void)onBackdropTap:(id)sender
+{
+	if (_avoidBackdropTap)
+		[super onBackdropTap:sender];
+}
+
 #pragma mark - Picker View Data Source
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
