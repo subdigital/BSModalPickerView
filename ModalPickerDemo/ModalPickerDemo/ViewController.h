@@ -10,9 +10,11 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 
 - (IBAction)onSelectColor:(id)sender;
 - (IBAction)onSelectDate:(id)sender;
+- (IBAction)onSelectFloatRange:(id)sender;
+- (IBAction)onSelectTimeRange:(id)sender;
 
 @end

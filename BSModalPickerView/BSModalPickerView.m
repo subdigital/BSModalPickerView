@@ -31,6 +31,7 @@
 
 - (UIView *)pickerWithFrame:(CGRect)pickerFrame {
     UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
+    pickerView.backgroundColor = [UIColor whiteColor];
     pickerView.dataSource = self;
     pickerView.delegate = self;
     pickerView.showsSelectionIndicator = YES;

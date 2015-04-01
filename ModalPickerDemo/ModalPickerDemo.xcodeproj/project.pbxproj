@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		312762041ACCA0B3001084EF /* BSModalFloatRangePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 312761FF1ACCA0B3001084EF /* BSModalFloatRangePickerView.m */; };
+		312762051ACCA0B3001084EF /* BSModalRangePickerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 312762011ACCA0B3001084EF /* BSModalRangePickerBase.m */; };
+		312762061ACCA0B3001084EF /* BSModalTimeRangePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 312762031ACCA0B3001084EF /* BSModalTimeRangePickerView.m */; };
 		B500DAFB17563C4900E08D3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B500DAFA17563C4900E08D3B /* UIKit.framework */; };
 		B500DAFD17563C4900E08D3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B500DAFC17563C4900E08D3B /* Foundation.framework */; };
 		B500DAFF17563C4900E08D3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B500DAFE17563C4900E08D3B /* CoreGraphics.framework */; };
@@ -24,6 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		312761FE1ACCA0B3001084EF /* BSModalFloatRangePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSModalFloatRangePickerView.h; sourceTree = "<group>"; };
+		312761FF1ACCA0B3001084EF /* BSModalFloatRangePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSModalFloatRangePickerView.m; sourceTree = "<group>"; };
+		312762001ACCA0B3001084EF /* BSModalRangePickerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSModalRangePickerBase.h; sourceTree = "<group>"; };
+		312762011ACCA0B3001084EF /* BSModalRangePickerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSModalRangePickerBase.m; sourceTree = "<group>"; };
+		312762021ACCA0B3001084EF /* BSModalTimeRangePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSModalTimeRangePickerView.h; sourceTree = "<group>"; };
+		312762031ACCA0B3001084EF /* BSModalTimeRangePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSModalTimeRangePickerView.m; sourceTree = "<group>"; };
 		B500DAF717563C4900E08D3B /* ModalPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModalPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B500DAFA17563C4900E08D3B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B500DAFC17563C4900E08D3B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,10 +131,16 @@
 			children = (
 				B5A7E07917565C8F005A49C4 /* BSModalDatePickerView.h */,
 				B5A7E07A17565C8F005A49C4 /* BSModalDatePickerView.m */,
+				312761FE1ACCA0B3001084EF /* BSModalFloatRangePickerView.h */,
+				312761FF1ACCA0B3001084EF /* BSModalFloatRangePickerView.m */,
 				B5A7E07B17565C8F005A49C4 /* BSModalPickerBase.h */,
 				B5A7E07C17565C8F005A49C4 /* BSModalPickerBase.m */,
 				B5A7E07D17565C8F005A49C4 /* BSModalPickerView.h */,
 				B5A7E07E17565C8F005A49C4 /* BSModalPickerView.m */,
+				312762001ACCA0B3001084EF /* BSModalRangePickerBase.h */,
+				312762011ACCA0B3001084EF /* BSModalRangePickerBase.m */,
+				312762021ACCA0B3001084EF /* BSModalTimeRangePickerView.h */,
+				312762031ACCA0B3001084EF /* BSModalTimeRangePickerView.m */,
 			);
 			name = BSModalPickerView;
 			path = ../BSModalPickerView;
@@ -197,9 +212,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				312762041ACCA0B3001084EF /* BSModalFloatRangePickerView.m in Sources */,
 				B500DB0717563C4900E08D3B /* main.m in Sources */,
 				B500DB0B17563C4900E08D3B /* AppDelegate.m in Sources */,
+				312762051ACCA0B3001084EF /* BSModalRangePickerBase.m in Sources */,
 				B500DB1417563C4900E08D3B /* ViewController.m in Sources */,
+				312762061ACCA0B3001084EF /* BSModalTimeRangePickerView.m in Sources */,
 				B5A7E07F17565C8F005A49C4 /* BSModalDatePickerView.m in Sources */,
 				B5A7E08017565C8F005A49C4 /* BSModalPickerBase.m in Sources */,
 				B5A7E08117565C8F005A49C4 /* BSModalPickerView.m in Sources */,
