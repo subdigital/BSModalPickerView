@@ -64,28 +64,38 @@
     return result;
 }
 
-#pragma mark - Public
-
-- (void)setSelectedMinValue:(NSDate *)minValue {
-    if (minValue) {
-        for (NSDate *value in self.rangeValues) {
-            if ([value timeIntervalSinceDate:minValue] == 0) {
-                [self setSelectedMinRowIndex:[self.rangeValues indexOfObject:value]];
-                break;
+- (NSUInteger)indexForSelectedValue:(id)value {
+    __block NSUInteger result = 0;
+    
+    if (value && [value isKindOfClass:[NSDate class]]) {
+        NSTimeInterval valueTimeOnly = [self timeIntervalOnlyForDate:value];
+        
+        [self.rangeValues enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSDate *rangeValue = (NSDate *)obj;
+            NSTimeInterval rangeValueTimeOnly = [self timeIntervalOnlyForDate:rangeValue];
+            
+            if (rangeValueTimeOnly == valueTimeOnly) {
+                result = idx;
+                *stop = YES;
             }
-        }
+        }];
     }
+    
+    return result;
 }
 
-- (void)setSelectedMaxValue:(NSDate *)maxValue {
-    if (maxValue) {
-        for (NSDate *value in self.rangeValues) {
-            if ([value timeIntervalSinceDate:maxValue] == 0) {
-                [self setSelectedMaxRowIndex:[self.rangeValues indexOfObject:value]];
-                break;
-            }
-        }
-    }
+- (NSTimeInterval)timeIntervalOnlyForDate:(NSDate *)date {
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar]
+                                        components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit
+                                        fromDate:date];
+    
+    [dateComponents setHour:0];
+    [dateComponents setMinute:0];
+    
+    NSDate *dateWithNoTime = [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
+    NSTimeInterval timeOnly = [date timeIntervalSinceDate:dateWithNoTime];
+    
+    return timeOnly;
 }
 
 @end

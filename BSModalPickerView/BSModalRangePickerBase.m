@@ -67,6 +67,38 @@
     return nil;
 }
 
+- (void)setSelectedMinValue:(id)selectedMinValue {
+    NSUInteger index = [self indexForSelectedValue:selectedMinValue];
+    
+    if ([self.rangeValues count] > index) {
+        [self setSelectedMinRowIndex:index];
+        
+        UIPickerView *pickerView = (UIPickerView *)self.picker;
+        
+        if (pickerView) {
+            [pickerView selectRow:index inComponent:0 animated:NO];
+        }
+    }
+}
+
+- (void)setSelectedMaxValue:(id)selectedMaxValue {
+    NSUInteger index = [self indexForSelectedValue:selectedMaxValue];
+    
+    if (self.selectedMinRowIndex <= index) {
+        index -= self.selectedMinRowIndex;
+    }
+    
+    if ([self.rangeValues count] > index) {
+        [self setSelectedMaxRowIndex:index];
+        
+        UIPickerView *pickerView = (UIPickerView *)self.picker;
+        
+        if (pickerView) {
+            [pickerView selectRow:index inComponent:1 animated:NO];
+        }
+    }
+}
+
 #pragma mark - Subclass-implemented methods
 
 - (void)calculateRangeValues {
@@ -78,6 +110,12 @@
     [NSException raise:NSGenericException
                 format:@"formatValue:forComponent: must be implemented by a subclass"];
     return nil;
+}
+
+- (NSUInteger)indexForSelectedValue:(id)value {
+    [NSException raise:NSGenericException
+                format:@"indexForSelectedValue: must be implemented by a subclass"];
+    return 0;
 }
 
 #pragma mark - Picker View Data Source
@@ -117,10 +155,13 @@
             newMaxValueIndex = 0;
         }
         
+        if ([self.rangeValues count] <= newMaxValueIndex) {
+            newMaxValueIndex = [self.rangeValues count] - 1;
+        }
+        
         self.selectedMaxRowIndex = newMaxValueIndex;
         
         [pickerView selectRow:newMaxValueIndex inComponent:1 animated:NO];
-        
     } else {
         self.selectedMaxRowIndex = row;
     }

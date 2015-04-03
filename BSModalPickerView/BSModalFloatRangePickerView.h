@@ -13,7 +13,4 @@
 
 - (instancetype)initWithFloatInterval:(CGFloat)floatInterval andMinRange:(CGFloat)minRangeValue andMaxRange:(CGFloat)maxRangeValue;
 
-- (void)setSelectedMinValue:(CGFloat)minValue;
-- (void)setSelectedMaxValue:(CGFloat)maxValue;
-
 @end

@@ -15,7 +15,7 @@
 @property (nonatomic) NSUInteger selectedMinRowIndex;
 @property (nonatomic) NSUInteger selectedMaxRowIndex;
 
-- (id)selectedMaxValue;
-- (id)selectedMinValue;
+@property (nonatomic) id selectedMaxValue;
+@property (nonatomic) id selectedMinValue;
 
 @end

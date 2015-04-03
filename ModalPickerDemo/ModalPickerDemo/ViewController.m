@@ -16,6 +16,12 @@
     NSInteger _lastSelectedIndex;
 }
 
+@property (nonatomic, strong) NSNumber *lastSelectedFloatRangeMin;
+@property (nonatomic, strong) NSNumber *lastSelectedFloatRangeMax;
+
+@property (nonatomic, strong) NSDate *lastSelectedTimeRangeMin;
+@property (nonatomic, strong) NSDate *lastSelectedTimeRangeMax;
+
 @end
 
 @implementation ViewController
@@ -66,13 +72,17 @@
 
 - (IBAction)onSelectFloatRange:(id)sender {
     BSModalFloatRangePickerView *floatRangePicker = [[BSModalFloatRangePickerView alloc] initWithFloatInterval:0.525 andMinRange:0.0 andMaxRange:10.5];
+    
+    [floatRangePicker setSelectedMinValue:self.lastSelectedFloatRangeMin];
+    [floatRangePicker setSelectedMaxValue:self.lastSelectedFloatRangeMax];
+    
     [floatRangePicker presentInView:self.view
                     withBlock:^(BOOL madeChoice) {
                         if (madeChoice) {
-                            NSNumber *selectedMin = [floatRangePicker selectedMinValue];
-                            NSNumber *selectedMax = [floatRangePicker selectedMaxValue];
+                            self.lastSelectedFloatRangeMin = [floatRangePicker selectedMinValue];
+                            self.lastSelectedFloatRangeMax = [floatRangePicker selectedMaxValue];
                             
-                            NSString *rangeString = [NSString stringWithFormat:@"%@ - %@", [selectedMin stringValue], [selectedMax stringValue]];
+                            NSString *rangeString = [NSString stringWithFormat:@"%@ - %@", [self.lastSelectedFloatRangeMin stringValue], [self.lastSelectedFloatRangeMax stringValue]];
 
                             [self.resultLabel setText:rangeString];
                         }
@@ -103,16 +113,23 @@
     NSDate *maxRangeDate =  [[NSCalendar currentCalendar] dateFromComponents:time];
 
     BSModalTimeRangePickerView *timeRangePicker = [[BSModalTimeRangePickerView alloc] initWithTimeInterval:15 andMinRange:minRangeDate andMaxRange:maxRangeDate];
+    
+    [timeRangePicker setSelectedMinValue:self.lastSelectedTimeRangeMin];
+    [timeRangePicker setSelectedMaxValue:self.lastSelectedTimeRangeMax];
+    
     [timeRangePicker presentInView:self.view
                           withBlock:^(BOOL madeChoice) {
                               if (madeChoice) {
+                                  self.lastSelectedTimeRangeMin = [timeRangePicker selectedMinValue];
+                                  self.lastSelectedTimeRangeMax = [timeRangePicker selectedMaxValue];
+                                  
                                   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
                                   [dateFormatter setDateStyle:NSDateFormatterNoStyle];
                                   [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
                                   [dateFormatter setLocale:[NSLocale currentLocale]];
                                   
-                                  NSString *selectedMin = [dateFormatter stringFromDate:[timeRangePicker selectedMinValue]];
-                                  NSString *selectedMax = [dateFormatter stringFromDate:[timeRangePicker selectedMaxValue]];
+                                  NSString *selectedMin = [dateFormatter stringFromDate:self.lastSelectedTimeRangeMin];
+                                  NSString *selectedMax = [dateFormatter stringFromDate:self.lastSelectedTimeRangeMax];
                                   
                                   NSString *rangeString = [NSString stringWithFormat:@"%@ - %@", selectedMin, selectedMax];
                                   

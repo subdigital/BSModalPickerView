@@ -53,32 +53,30 @@
 - (NSString *)formatValue:(id)value forComponent:(NSInteger)component {
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-
+    
     NSString *formattedValue = [numberFormatter stringFromNumber:value];
     return formattedValue;
 }
 
-#pragma mark - Public
-
-- (void)setSelectedMinValue:(CGFloat)minValue {
-    for (NSNumber *value in self.rangeValues) {
-        if ([BSModalFloatRangePickerView floatValue:[value floatValue] isEqualToFloat:minValue]) {
-            [self setSelectedMinRowIndex:[self.rangeValues indexOfObject:value]];
-            break;
-        }
+- (NSUInteger)indexForSelectedValue:(id)value {
+    __block NSUInteger result = 0;
+    
+    if (value) {
+        CGFloat floatValue = [value floatValue];
+        
+        [self.rangeValues enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSNumber *rangeValue = (NSNumber *)obj;
+            CGFloat rangeFloatValue = [rangeValue floatValue];
+            
+            if ([BSModalFloatRangePickerView floatValue:floatValue isEqualToFloat:rangeFloatValue]) {
+                result = idx;
+                *stop = YES;
+            }
+        }];
     }
+    
+    return result;
 }
-
-- (void)setSelectedMaxValue:(CGFloat)maxValue {
-    for (NSNumber *value in self.rangeValues) {
-        if ([BSModalFloatRangePickerView floatValue:[value floatValue] isEqualToFloat:maxValue]) {
-            [self setSelectedMaxRowIndex:[self.rangeValues indexOfObject:value]];
-            break;
-        }
-    }
-}
-
-#pragma mark - Private
 
 + (BOOL)floatValue:(CGFloat)firstValue isEqualToFloat:(CGFloat)secondValue {
     double diff = fabs(firstValue - secondValue);

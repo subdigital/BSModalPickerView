@@ -12,7 +12,4 @@
 
 - (instancetype)initWithTimeInterval:(double)timeInterval andMinRange:(NSDate*)minRangeValue andMaxRange:(NSDate *)maxRangeValue;
 
-- (void)setSelectedMinValue:(NSDate *)minValue;
-- (void)setSelectedMaxValue:(NSDate *)maxValue;
-
 @end
