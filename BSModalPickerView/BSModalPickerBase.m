@@ -42,6 +42,7 @@
 
         _picker = [self pickerWithFrame:pickerFrame];
         _picker.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        _picker.backgroundColor = [UIColor whiteColor];
     }
 
     return _picker;
