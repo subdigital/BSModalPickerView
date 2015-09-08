@@ -48,8 +48,8 @@
     _values = values;
     
     if (_values) {
-        if (self.picker) {
-            UIPickerView *pickerView = (UIPickerView *)self.picker;
+        if (_picker) {
+            UIPickerView *pickerView = (UIPickerView *)_picker;
             [pickerView reloadAllComponents];
             self.selectedIndex = 0;
         }
