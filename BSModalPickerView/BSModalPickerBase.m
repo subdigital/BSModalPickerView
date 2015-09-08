@@ -170,9 +170,13 @@
                          self.panel.frame = newFrame;
                          self.backdropView.alpha = 0;
                      } completion:^(BOOL finished) {
+                         [self.picker removeFromSuperview];
                          [self.panel removeFromSuperview];
-                         
                          [self.backdropView removeFromSuperview];
+                         
+                         self.picker = nil;
+                         self.panel = nil;
+                         self.backdropView = nil;
                          
                          [self removeFromSuperview];
                      }];
