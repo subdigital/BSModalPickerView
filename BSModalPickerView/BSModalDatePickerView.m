@@ -29,6 +29,8 @@
 - (UIView *)pickerWithFrame:(CGRect)pickerFrame {
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:pickerFrame];
 
+    datePicker.backgroundColor = [UIColor whiteColor];
+    
     if (self.selectedDate) {
         datePicker.date = self.selectedDate;
     }
