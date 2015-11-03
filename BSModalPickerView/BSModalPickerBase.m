@@ -19,11 +19,14 @@
 
 @implementation BSModalPickerBase
 
+@synthesize toolbarStyle;
+
 #pragma mark - Designated Initializer
 
 - (id)init {
     self = [super init];
     if (self) {
+        self.toolbarStyle = UIBarStyleBlackTranslucent;
         self.autoresizesSubviews = YES;
         self.presentBackdropView = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -65,7 +68,7 @@
 - (UIToolbar *)toolbar {
     if (!_toolbar) {
         _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, BSMODALPICKER_TOOLBAR_HEIGHT)];
-        _toolbar.barStyle = UIBarStyleBlackTranslucent;
+        _toolbar.barStyle = toolbarStyle;
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                   target:self
                                                                                   action:@selector(onCancel:)];

@@ -46,5 +46,7 @@ typedef void (^BSModalPickerViewCallback)(BOOL madeChoice);
 
 /* Override and return any additional buttons that you want on the toolbar.  By default, this is just a flexible space item. */
 - (NSArray *)additionalToolbarItems;
+
+@property (nonatomic) UIBarStyle toolbarStyle;
     
 @end
